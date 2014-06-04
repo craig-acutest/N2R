@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2R", "N2R\N2R.csproj", "{EE6FD31A-1D60-44D5-8B34-A8C34A644772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{4852D972-E277-4263-852A-9D478E8F410D}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{B7B5D7EF-A53C-4487-9633-8A328F17E119}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\N2R-WAWS-dev.json = PublishScripts\Configurations\N2R-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7B5D7EF-A53C-4487-9633-8A328F17E119} = {4852D972-E277-4263-852A-9D478E8F410D}
+	EndGlobalSection
+EndGlobal
