@@ -47,9 +47,19 @@ namespace N2R
             //   consumerSecret: "");
 
             //live
-            app.UseFacebookAuthentication(
-               appId: "282270101954979",
-               appSecret: "dfd540ced2d4af8d60b047fc1cc7cdf9");
+            var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            {
+                AppId = "282270101954979",
+                AppSecret = "dfd540ced2d4af8d60b047fc1cc7cdf9"
+            };
+            facebookOptions.Scope.Add("email");
+            facebookOptions.Scope.Add("user_friends");
+            facebookOptions.Scope.Add("user_location");
+            app.UseFacebookAuthentication(facebookOptions);
+
+            //app.UseFacebookAuthentication(
+            //   appId: "282270101954979",
+            //   appSecret: "dfd540ced2d4af8d60b047fc1cc7cdf9");
 
             //test
             //app.UseFacebookAuthentication(
