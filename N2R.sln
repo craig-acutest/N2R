@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\N2R-WAWS-dev.json = PublishScripts\Configurations\N2R-WAWS-dev.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2R.Utilities", "N2R.Utilities\N2R.Utilities.csproj", "{83559950-C7B9-43C9-83D1-75081E4A9974}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE6FD31A-1D60-44D5-8B34-A8C34A644772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83559950-C7B9-43C9-83D1-75081E4A9974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83559950-C7B9-43C9-83D1-75081E4A9974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83559950-C7B9-43C9-83D1-75081E4A9974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83559950-C7B9-43C9-83D1-75081E4A9974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
