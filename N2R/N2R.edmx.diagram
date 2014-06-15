@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cebd034ed9b4c3db42dcc65ec3d9596" Name="Diagram1" ZoomLevel="25">
+        <EntityTypeShape EntityType="N2RModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="N2RModel.Address" Width="1.5" PointX="12.875" PointY="10.375" />
+        <EntityTypeShape EntityType="N2RModel.Area" Width="1.5" PointX="23.5" PointY="28.625" />
+        <EntityTypeShape EntityType="N2RModel.AspNetRole" Width="1.5" PointX="1.5" PointY="18" />
+        <EntityTypeShape EntityType="N2RModel.AspNetUserClaim" Width="1.5" PointX="1.5" PointY="20" />
+        <EntityTypeShape EntityType="N2RModel.AspNetUserLogin" Width="1.5" PointX="1.5" PointY="15.75" />
+        <EntityTypeShape EntityType="N2RModel.AspNetUser" Width="1.5" PointX="6.25" PointY="16.875" />
+        <EntityTypeShape EntityType="N2RModel.Conversation" Width="1.5" PointX="36.125" PointY="13.375" />
+        <EntityTypeShape EntityType="N2RModel.ConversationReply" Width="1.5" PointX="38.375" PointY="16.625" />
+        <EntityTypeShape EntityType="N2RModel.Entertainer" Width="1.5" PointX="42.75" PointY="2.875" />
+        <EntityTypeShape EntityType="N2RModel.Event" Width="1.5" PointX="30.125" PointY="3.5" />
+        <EntityTypeShape EntityType="N2RModel.EventEntertainer" Width="1.5" PointX="36.25" PointY="6.875" />
+        <EntityTypeShape EntityType="N2RModel.FavoriteVenue" Width="1.5" PointX="18" PointY="17" />
+        <EntityTypeShape EntityType="N2RModel.Gender" Width="1.5" PointX="5.625" PointY="29.625" />
+        <EntityTypeShape EntityType="N2RModel.Group" Width="1.5" PointX="18.875" PointY="8.75" />
+        <EntityTypeShape EntityType="N2RModel.GroupInvitation" Width="1.5" PointX="18.875" PointY="12.25" />
+        <EntityTypeShape EntityType="N2RModel.GroupUser" Width="1.5" PointX="27.375" PointY="9.125" />
+        <EntityTypeShape EntityType="N2RModel.Image" Width="1.5" PointX="24.75" PointY="7.125" />
+        <EntityTypeShape EntityType="N2RModel.Log" Width="1.5" PointX="1.5" PointY="23.375" />
+        <EntityTypeShape EntityType="N2RModel.LogCode" Width="1.5" PointX="1.5" PointY="27" />
+        <EntityTypeShape EntityType="N2RModel.MusicGenre" Width="1.5" PointX="26.375" PointY="13.125" />
+        <EntityTypeShape EntityType="N2RModel.NightStatu" Width="1.5" PointX="39" PointY="25.125" />
+        <EntityTypeShape EntityType="N2RModel.RelationshipStatu" Width="1.5" PointX="5.625" PointY="27.75" />
+        <EntityTypeShape EntityType="N2RModel.SexualOrientation" Width="1.5" PointX="5.625" PointY="25.75" />
+        <EntityTypeShape EntityType="N2RModel.Status" Width="1.5" PointX="34.125" PointY="11.375" />
+        <EntityTypeShape EntityType="N2RModel.User" Width="1.5" PointX="20.875" PointY="18" />
+        <EntityTypeShape EntityType="N2RModel.UserAddress" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="N2RModel.UserDetail" Width="1.5" PointX="10.375" PointY="27.125" />
+        <EntityTypeShape EntityType="N2RModel.UserFriend" Width="1.5" PointX="14.625" PointY="24.625" />
+        <EntityTypeShape EntityType="N2RModel.UserLocation" Width="1.5" PointX="20.625" PointY="28.25" />
+        <EntityTypeShape EntityType="N2RModel.UserMusicGenre" Width="1.5" PointX="23.625" PointY="13.125" />
+        <EntityTypeShape EntityType="N2RModel.UserStatu" Width="1.5" PointX="25.5" PointY="26" />
+        <EntityTypeShape EntityType="N2RModel.Venue" Width="1.5" PointX="16.5" PointY="2.5" />
+        <EntityTypeShape EntityType="N2RModel.VenueFeedback" Width="1.5" PointX="33.125" PointY="24.625" />
+        <EntityTypeShape EntityType="N2RModel.VenueInvitation" Width="1.5" PointX="33.125" PointY="16.375" />
+        <EntityTypeShape EntityType="N2RModel.VenueRating" Width="1.5" PointX="33.125" PointY="3.75" />
+        <EntityTypeShape EntityType="N2RModel.VenueRatingType" Width="1.5" PointX="36.125" PointY="3.75" />
+        <EntityTypeShape EntityType="N2RModel.VenueVisit" Width="1.5" PointX="36.125" PointY="24.375" />
+        <AssociationConnector Association="N2RModel.FK_UserAddress_Address" />
+        <AssociationConnector Association="N2RModel.FK_Venue_Address" />
+        <AssociationConnector Association="N2RModel.FK_UserLocation_Area" />
+        <AssociationConnector Association="N2RModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="N2RModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="N2RModel.FK_User_AspNetUsers" />
+        <AssociationConnector Association="N2RModel.FK_Conversation_Status" />
+        <AssociationConnector Association="N2RModel.FK_Conversation_User" />
+        <AssociationConnector Association="N2RModel.FK_Conversation_User1" />
+        <AssociationConnector Association="N2RModel.FK_ConversationReply_Conversation" />
+        <AssociationConnector Association="N2RModel.FK_ConversationReply_Status" />
+        <AssociationConnector Association="N2RModel.FK_ConversationReply_User" />
+        <AssociationConnector Association="N2RModel.FK_EventEntertainer_Entertainer" />
+        <AssociationConnector Association="N2RModel.FK_Event_Venue" />
+        <AssociationConnector Association="N2RModel.FK_EventEntertainer_Event" />
+        <AssociationConnector Association="N2RModel.FK_FavoriteVenue_User" />
+        <AssociationConnector Association="N2RModel.FK_FavoriteVenue_Venue" />
+        <AssociationConnector Association="N2RModel.FK_UserDetails_Gender" />
+        <AssociationConnector Association="N2RModel.FK_GroupInvitation_Group" />
+        <AssociationConnector Association="N2RModel.FK_GroupUsers_Group" />
+        <AssociationConnector Association="N2RModel.FK_GroupInvitation_User" />
+        <AssociationConnector Association="N2RModel.FK_GroupInvitation_User1" />
+        <AssociationConnector Association="N2RModel.FK_GroupUsers_User" />
+        <AssociationConnector Association="N2RModel.FK_Venue_Image" />
+        <AssociationConnector Association="N2RModel.FK_Log_LogCode" />
+        <AssociationConnector Association="N2RModel.FK_Log_User" />
+        <AssociationConnector Association="N2RModel.FK_MusicGenre_MusicGenre" />
+        <AssociationConnector Association="N2RModel.FK_UserMusicGenre_MusicGenre" />
+        <AssociationConnector Association="N2RModel.FK_VenueVisit_NightStatus" />
+        <AssociationConnector Association="N2RModel.FK_UserDetails_RelationshipStatus" />
+        <AssociationConnector Association="N2RModel.FK_UserDetails_SexualOrientation" />
+        <AssociationConnector Association="N2RModel.FK_UserStatus_Status" />
+        <AssociationConnector Association="N2RModel.FK_UserAddress_User" />
+        <AssociationConnector Association="N2RModel.FK_UserDetails_User" />
+        <AssociationConnector Association="N2RModel.FK_UserFriend_User" />
+        <AssociationConnector Association="N2RModel.FK_UserFriend_User1" />
+        <AssociationConnector Association="N2RModel.FK_UserLocation_User" />
+        <AssociationConnector Association="N2RModel.FK_UserMusicGenre_User" />
+        <AssociationConnector Association="N2RModel.FK_UserStatus_User" />
+        <AssociationConnector Association="N2RModel.FK_VenueFeedback_User" />
+        <AssociationConnector Association="N2RModel.FK_VenueInvitation_User" />
+        <AssociationConnector Association="N2RModel.FK_VenueInvitation_User1" />
+        <AssociationConnector Association="N2RModel.FK_VenueVisit_User" />
+        <AssociationConnector Association="N2RModel.FK_VenueFeedback_Venue" />
+        <AssociationConnector Association="N2RModel.FK_VenueInvitation_Venue" />
+        <AssociationConnector Association="N2RModel.FK_VenueRating_Venue" />
+        <AssociationConnector Association="N2RModel.FK_VenueVisit_Venue" />
+        <AssociationConnector Association="N2RModel.FK_VenueRating_VenueRatingType" />
+        <AssociationConnector Association="N2RModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="N2RModel.VenueType" Width="1.5" PointX="25.625" PointY="3.375" />
+        <AssociationConnector Association="N2RModel.FK_Venue_VenueType" />
+        <AssociationConnector Association="N2RModel.FK_VenueType_VenueType" />
+        <EntityTypeShape EntityType="N2RModel.Business" Width="1.5" PointX="42" PointY="28.75" />
+        <EntityTypeShape EntityType="N2RModel.BusinessUser" Width="1.5" PointX="29.875" PointY="28.125" />
+        <EntityTypeShape EntityType="N2RModel.BusinessVenue" Width="1.5" PointX="43.75" PointY="13" />
+        <EntityTypeShape EntityType="N2RModel.Product" Width="1.5" PointX="42" PointY="20.125" />
+        <AssociationConnector Association="N2RModel.FK_Business_Address" />
+        <AssociationConnector Association="N2RModel.FK_BusinessUser_Business" />
+        <AssociationConnector Association="N2RModel.FK_BusinessUser_User" />
+        <AssociationConnector Association="N2RModel.FK_BusinessVenue_Business" />
+        <AssociationConnector Association="N2RModel.FK_BusinessVenue_Venue" />
+        <EntityTypeShape EntityType="N2RModel.VenueProduct" Width="1.5" PointX="41.75" PointY="10.25" />
+        <AssociationConnector Association="N2RModel.FK_VenueProduct_Product" />
+        <AssociationConnector Association="N2RModel.FK_VenueProduct_Venue" ManuallyRouted="true" >
+          <ConnectorPoint PointX="18" PointY="4.8430900944010418" />
+          <ConnectorPoint PointX="23.004411115382396" PointY="4.8430900944010409" />
+          <ConnectorPoint PointX="23.171077782049061" PointY="4.8430900944010418" />
+          <ConnectorPoint PointX="24.5" PointY="4.8430900944010418" />
+          <ConnectorPoint PointX="24.5" PointY="9.3552864583333335" />
+          <ConnectorPoint PointX="26.791666666666668" PointY="9.3552864583333335" />
+          <ConnectorPoint PointX="26.958333333333332" PointY="9.3552864583333335" />
+          <ConnectorPoint PointX="27.125" PointY="9.3552864583333335" />
+          <ConnectorPoint PointX="27.125" PointY="8.875" />
+          <ConnectorPoint PointX="29.5" PointY="8.875" />
+          <ConnectorPoint PointX="29.5" PointY="9.855286458420256" />
+          <ConnectorPoint PointX="29.666666666666668" PointY="9.855286458420256" />
+          <ConnectorPoint PointX="29.833333333333332" PointY="9.855286458420256" />
+          <ConnectorPoint PointX="42.436049258434153" PointY="9.855286458420256" />
+          <ConnectorPoint PointX="42.436049258434153" PointY="10.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="N2RModel.UserEntertainer" Width="1.5" PointX="22.125" PointY="5.25" />
+        <AssociationConnector Association="N2RModel.FK_UserEntertainer_Entertainer" />
+        <AssociationConnector Association="N2RModel.FK_UserEntertainer_User" />
+        <EntityTypeShape EntityType="N2RModel.Order" Width="1.5" PointX="30.125" PointY="17" />
+        <EntityTypeShape EntityType="N2RModel.OrderProduct" Width="1.5" PointX="39" PointY="20" />
+        <AssociationConnector Association="N2RModel.FK_Order_Address" />
+        <AssociationConnector Association="N2RModel.FK_Order_User" />
+        <AssociationConnector Association="N2RModel.FK_OrderProducts_Order" />
+        <AssociationConnector Association="N2RModel.FK_OrderProducts_Product" />
+        <EntityTypeShape EntityType="N2RModel.File" Width="1.5" PointX="22.25" PointY="1" />
+        <EntityTypeShape EntityType="N2RModel.FileType" Width="1.5" PointX="13.75" PointY="0.625" />
+        <EntityTypeShape EntityType="N2RModel.Gallery" Width="1.5" PointX="7.875" PointY="3.25" />
+        <EntityTypeShape EntityType="N2RModel.GalleryImage" Width="1.5" PointX="30" PointY="7.5" />
+        <EntityTypeShape EntityType="N2RModel.GalleryType" Width="1.5" PointX="3.375" PointY="4.125" />
+        <EntityTypeShape EntityType="N2RModel.VenueFile" Width="1.5" PointX="18.75" PointY="0.875" />
+        <EntityTypeShape EntityType="N2RModel.VenueGallery" Width="1.5" PointX="11.625" PointY="3.25" />
+        <AssociationConnector Association="N2RModel.FK_VenueFiles_File" />
+        <AssociationConnector Association="N2RModel.FK_FileType_FileType" />
+        <AssociationConnector Association="N2RModel.FK_VenueFiles_FileType" />
+        <AssociationConnector Association="N2RModel.FK_Gallery_GalleryType" />
+        <AssociationConnector Association="N2RModel.FK_GalleryImages_Gallery" />
+        <AssociationConnector Association="N2RModel.FK_VenueGallery_Gallery" />
+        <AssociationConnector Association="N2RModel.FK_GalleryImages_Image" />
+        <AssociationConnector Association="N2RModel.FK_VenueFiles_Venue" />
+        <AssociationConnector Association="N2RModel.FK_VenueGallery_Venue" />
+        <EntityTypeShape EntityType="N2RModel.UserGallery" Width="1.5" PointX="7.625" PointY="14" />
+        <AssociationConnector Association="N2RModel.FK_UserGallery_Gallery" />
+        <AssociationConnector Association="N2RModel.FK_UserGallery_UserGallery1" />
+        <AssociationConnector Association="N2RModel.FK_VenueProduct_Order" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
