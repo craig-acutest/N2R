@@ -10,6 +10,8 @@ namespace N2R.Controllers
     {
         public ActionResult Index()
         {
+            N2R.Utilities.Email.Read_Emails();
+
             return View();
         }
 

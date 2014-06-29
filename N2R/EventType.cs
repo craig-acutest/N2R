@@ -12,23 +12,20 @@ namespace N2R
     using System;
     using System.Collections.Generic;
     
-    public partial class Event
+    public partial class EventType
     {
-        public Event()
+        public EventType()
         {
-            this.EventEntertainers = new HashSet<EventEntertainer>();
+            this.EventType1 = new HashSet<EventType>();
+            this.Events = new HashSet<Event>();
         }
     
         public int ID { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> OwnerVenueID { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-        public Nullable<int> TypeID { get; set; }
+        public Nullable<int> SubTypeID { get; set; }
     
-        public virtual EventType EventType { get; set; }
-        public virtual Venue Venue { get; set; }
-        public virtual ICollection<EventEntertainer> EventEntertainers { get; set; }
+        public virtual ICollection<EventType> EventType1 { get; set; }
+        public virtual EventType EventType2 { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

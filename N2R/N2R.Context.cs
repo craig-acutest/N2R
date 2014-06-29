@@ -35,7 +35,6 @@ namespace N2R
         public virtual DbSet<Conversation> Conversations { get; set; }
         public virtual DbSet<ConversationReply> ConversationReplies { get; set; }
         public virtual DbSet<Entertainer> Entertainers { get; set; }
-        public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<EventEntertainer> EventEntertainers { get; set; }
         public virtual DbSet<FavoriteVenue> FavoriteVenues { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
@@ -80,5 +79,8 @@ namespace N2R
         public virtual DbSet<VenueFile> VenueFiles { get; set; }
         public virtual DbSet<VenueGallery> VenueGalleries { get; set; }
         public virtual DbSet<UserGallery> UserGalleries { get; set; }
+        public virtual DbSet<EventType> EventTypes { get; set; }
+        public virtual DbSet<UserEmail> UserEmails { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
     }
 }

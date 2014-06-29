@@ -101,7 +101,7 @@ namespace N2R.Utilities
         {
             bool deleted = false;
 
-            if (fileExist(FileName, BucketName))
+            if (FileExist(FileName, BucketName))
             {
                 try
                 {

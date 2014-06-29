@@ -39,6 +39,7 @@ namespace N2R
             this.UserEntertainers = new HashSet<UserEntertainer>();
             this.Orders = new HashSet<Order>();
             this.UserGalleries = new HashSet<UserGallery>();
+            this.UserEmails = new HashSet<UserEmail>();
         }
     
         public int ID { get; set; }
@@ -68,5 +69,6 @@ namespace N2R
         public virtual ICollection<UserEntertainer> UserEntertainers { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<UserGallery> UserGalleries { get; set; }
+        public virtual ICollection<UserEmail> UserEmails { get; set; }
     }
 }

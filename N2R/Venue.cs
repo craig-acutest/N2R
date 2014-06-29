@@ -16,7 +16,6 @@ namespace N2R
     {
         public Venue()
         {
-            this.Events = new HashSet<Event>();
             this.FavoriteVenues = new HashSet<FavoriteVenue>();
             this.VenueFeedbacks = new HashSet<VenueFeedback>();
             this.VenueInvitations = new HashSet<VenueInvitation>();
@@ -26,6 +25,7 @@ namespace N2R
             this.VenueProducts = new HashSet<VenueProduct>();
             this.VenueFiles = new HashSet<VenueFile>();
             this.VenueGalleries = new HashSet<VenueGallery>();
+            this.Events = new HashSet<Event>();
         }
     
         public int ID { get; set; }
@@ -39,7 +39,6 @@ namespace N2R
         public Nullable<double> Longitude { get; set; }
     
         public virtual Address Address { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
         public virtual ICollection<FavoriteVenue> FavoriteVenues { get; set; }
         public virtual Image Image { get; set; }
         public virtual ICollection<VenueFeedback> VenueFeedbacks { get; set; }
@@ -51,5 +50,6 @@ namespace N2R
         public virtual ICollection<VenueProduct> VenueProducts { get; set; }
         public virtual ICollection<VenueFile> VenueFiles { get; set; }
         public virtual ICollection<VenueGallery> VenueGalleries { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

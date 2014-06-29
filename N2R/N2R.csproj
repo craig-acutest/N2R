@@ -58,6 +58,9 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="OpenPop">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1071\lib\net40\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="SendGrid.SmtpApi">
       <HintPath>..\packages\SendGrid.SmtpApi.1.1.3\lib\net40\SendGrid.SmtpApi.dll</HintPath>
     </Reference>
@@ -207,6 +210,8 @@
     <Compile Include="Area.cs">
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Corporate\CorporateAreaRegistration.cs" />
     <Compile Include="AspNetRole.cs">
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
@@ -246,6 +251,9 @@
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="EventEntertainer.cs">
+      <DependentUpon>N2R.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventType.cs">
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="FavoriteVenue.cs">
@@ -340,6 +348,9 @@
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="UserDetail.cs">
+      <DependentUpon>N2R.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserEmail.cs">
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="UserEntertainer.cs">
@@ -652,6 +663,8 @@
       <DependentUpon>N2R.edmx</DependentUpon>
       <LastGenOutput>N2R.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Corporate\Views\web.config" />
     <None Include="Properties\PublishProfiles\N2R2014.pubxml" />
     <Content Include="license-agreements\EULA.txt" />
     <Content Include="license-agreements\third-party\licenses.txt" />
@@ -1156,6 +1169,7 @@
     <Content Include="Scripts\slider\slider.css" />
     <Content Include="Scripts\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\sortable\jquery.sortable.js" />
+    <Content Include="Scripts\Util.js" />
     <Content Include="Scripts\wizard\demo.js" />
     <Content Include="Scripts\wizard\jquery.bootstrap.wizard.js" />
     <Content Include="Scripts\wysiwyg\bootstrap-wysiwyg.js" />
@@ -1201,6 +1215,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Corporate\Controllers\" />
+    <Folder Include="Areas\Corporate\Models\" />
+    <Folder Include="Areas\Corporate\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

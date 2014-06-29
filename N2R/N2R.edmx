@@ -156,7 +156,6 @@
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
           <Property Name="TypeID" Type="int" />
-          <Property Name="SubTypeID" Type="int" />
         </EntityType>
         <EntityType Name="EventEntertainer">
           <Key>
@@ -165,6 +164,14 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EventID" Type="int" />
           <Property Name="EntertainerID" Type="int" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="SubTypeID" Type="int" />
         </EntityType>
         <EntityType Name="FavoriteVenue">
           <Key>
@@ -374,6 +381,18 @@
           <Property Name="SexualityID" Type="int" />
           <Property Name="RelationshipStatusID" Type="int" />
           <Property Name="DOB" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Incoming" Type="nvarchar(max)" />
+          <Property Name="InPass" Type="nvarchar" MaxLength="250" />
+          <Property Name="Outgoing" Type="nvarchar(max)" />
+          <Property Name="OutPass" Type="nvarchar" MaxLength="250" />
+          <Property Name="SSLEnabled" Type="bit" />
         </EntityType>
         <EntityType Name="UserEntertainer">
           <Key>
@@ -718,6 +737,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_EventType">
+          <End Role="EventType" Type="Self.EventType" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Event_Venue">
           <End Role="Venue" Type="Self.Venue" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
@@ -751,6 +782,18 @@
             </Principal>
             <Dependent Role="EventEntertainer">
               <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventType_EventType1">
+          <End Role="EventType" Type="Self.EventType" Multiplicity="0..1" />
+          <End Role="EventType1" Type="Self.EventType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventType1">
+              <PropertyRef Name="SubTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1050,6 +1093,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="UserDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEmail_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserEmail" Type="Self.UserEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEmail">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1479,6 +1534,7 @@
           <EntitySet Name="Entertainer" EntityType="Self.Entertainer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventEntertainer" EntityType="Self.EventEntertainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoriteVenue" EntityType="Self.FavoriteVenue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FileType" EntityType="Self.FileType" Schema="dbo" store:Type="Tables" />
@@ -1503,6 +1559,7 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAddress" EntityType="Self.UserAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserEmail" EntityType="Self.UserEmail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserEntertainer" EntityType="Self.UserEntertainer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserFriend" EntityType="Self.UserFriend" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGallery" EntityType="Self.UserGallery" Schema="dbo" store:Type="Tables" />
@@ -1579,6 +1636,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_Event_EventType" Association="Self.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
           <AssociationSet Name="FK_Event_Venue" Association="Self.FK_Event_Venue">
             <End Role="Venue" EntitySet="Venue" />
             <End Role="Event" EntitySet="Event" />
@@ -1590,6 +1651,10 @@
           <AssociationSet Name="FK_EventEntertainer_Event" Association="Self.FK_EventEntertainer_Event">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventEntertainer" EntitySet="EventEntertainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventType_EventType1" Association="Self.FK_EventType_EventType1">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="EventType1" EntitySet="EventType" />
           </AssociationSet>
           <AssociationSet Name="FK_FavoriteVenue_User" Association="Self.FK_FavoriteVenue_User">
             <End Role="User" EntitySet="User" />
@@ -1690,6 +1755,10 @@
           <AssociationSet Name="FK_UserDetails_User" Association="Self.FK_UserDetails_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEmail_User" Association="Self.FK_UserEmail_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserEmail" EntitySet="UserEmail" />
           </AssociationSet>
           <AssociationSet Name="FK_UserEntertainer_Entertainer" Association="Self.FK_UserEntertainer_Entertainer">
             <End Role="Entertainer" EntitySet="Entertainer" />
@@ -1843,7 +1912,6 @@
           <EntitySet Name="Conversations" EntityType="N2RModel.Conversation" />
           <EntitySet Name="ConversationReplies" EntityType="N2RModel.ConversationReply" />
           <EntitySet Name="Entertainers" EntityType="N2RModel.Entertainer" />
-          <EntitySet Name="Events" EntityType="N2RModel.Event" />
           <EntitySet Name="EventEntertainers" EntityType="N2RModel.EventEntertainer" />
           <EntitySet Name="FavoriteVenues" EntityType="N2RModel.FavoriteVenue" />
           <EntitySet Name="Genders" EntityType="N2RModel.Gender" />
@@ -1921,14 +1989,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_EventEntertainer_Entertainer" Association="N2RModel.FK_EventEntertainer_Entertainer">
             <End Role="Entertainer" EntitySet="Entertainers" />
-            <End Role="EventEntertainer" EntitySet="EventEntertainers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Event_Venue" Association="N2RModel.FK_Event_Venue">
-            <End Role="Venue" EntitySet="Venues" />
-            <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EventEntertainer_Event" Association="N2RModel.FK_EventEntertainer_Event">
-            <End Role="Event" EntitySet="Events" />
             <End Role="EventEntertainer" EntitySet="EventEntertainers" />
           </AssociationSet>
           <AssociationSet Name="FK_FavoriteVenue_User" Association="N2RModel.FK_FavoriteVenue_User">
@@ -2192,6 +2252,29 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="VenueProduct" EntitySet="VenueProducts" />
           </AssociationSet>
+          <EntitySet Name="EventTypes" EntityType="N2RModel.EventType" />
+          <EntitySet Name="UserEmails" EntityType="N2RModel.UserEmail" />
+          <AssociationSet Name="FK_EventType_EventType1" Association="N2RModel.FK_EventType_EventType1">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="EventType1" EntitySet="EventTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEmail_User" Association="N2RModel.FK_UserEmail_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserEmail" EntitySet="UserEmails" />
+          </AssociationSet>
+          <EntitySet Name="Events" EntityType="N2RModel.Event" />
+          <AssociationSet Name="FK_Event_EventType" Association="N2RModel.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Venue" Association="N2RModel.FK_Event_Venue">
+            <End Role="Venue" EntitySet="Venues" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventEntertainer_Event" Association="N2RModel.FK_EventEntertainer_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="EventEntertainer" EntitySet="EventEntertainers" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -2320,21 +2403,6 @@
           <Property Name="Rating" Type="Int32" />
           <NavigationProperty Name="EventEntertainers" Relationship="N2RModel.FK_EventEntertainer_Entertainer" FromRole="Entertainer" ToRole="EventEntertainer" />
           <NavigationProperty Name="UserEntertainers" Relationship="N2RModel.FK_UserEntertainer_Entertainer" FromRole="Entertainer" ToRole="UserEntertainer" />
-        </EntityType>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OwnerVenueID" Type="Int32" />
-          <Property Name="StartDate" Type="DateTime" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Precision="3" />
-          <Property Name="TypeID" Type="Int32" />
-          <Property Name="SubTypeID" Type="Int32" />
-          <NavigationProperty Name="Venue" Relationship="N2RModel.FK_Event_Venue" FromRole="Event" ToRole="Venue" />
-          <NavigationProperty Name="EventEntertainers" Relationship="N2RModel.FK_EventEntertainer_Event" FromRole="Event" ToRole="EventEntertainer" />
         </EntityType>
         <EntityType Name="EventEntertainer">
           <Key>
@@ -2505,6 +2573,7 @@
           <NavigationProperty Name="UserEntertainers" Relationship="N2RModel.FK_UserEntertainer_User" FromRole="User" ToRole="UserEntertainer" />
           <NavigationProperty Name="Orders" Relationship="N2RModel.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="UserGalleries" Relationship="N2RModel.FK_UserGallery_UserGallery1" FromRole="User" ToRole="UserGallery" />
+          <NavigationProperty Name="UserEmails" Relationship="N2RModel.FK_UserEmail_User" FromRole="User" ToRole="UserEmail" />
         </EntityType>
         <EntityType Name="UserAddress">
           <Key>
@@ -2590,7 +2659,6 @@
           <Property Name="Latitude" Type="Double" />
           <Property Name="Longitude" Type="Double" />
           <NavigationProperty Name="Address" Relationship="N2RModel.FK_Venue_Address" FromRole="Venue" ToRole="Address" />
-          <NavigationProperty Name="Events" Relationship="N2RModel.FK_Event_Venue" FromRole="Venue" ToRole="Event" />
           <NavigationProperty Name="FavoriteVenues" Relationship="N2RModel.FK_FavoriteVenue_Venue" FromRole="Venue" ToRole="FavoriteVenue" />
           <NavigationProperty Name="Image" Relationship="N2RModel.FK_Venue_Image" FromRole="Venue" ToRole="Image" />
           <NavigationProperty Name="VenueFeedbacks" Relationship="N2RModel.FK_VenueFeedback_Venue" FromRole="Venue" ToRole="VenueFeedback" />
@@ -2602,6 +2670,7 @@
           <NavigationProperty Name="VenueProducts" Relationship="N2RModel.FK_VenueProduct_Venue" FromRole="Venue" ToRole="VenueProduct" />
           <NavigationProperty Name="VenueFiles" Relationship="N2RModel.FK_VenueFiles_Venue" FromRole="Venue" ToRole="VenueFile" />
           <NavigationProperty Name="VenueGalleries" Relationship="N2RModel.FK_VenueGallery_Venue" FromRole="Venue" ToRole="VenueGallery" />
+          <NavigationProperty Name="Events" Relationship="N2RModel.FK_Event_Venue" FromRole="Venue" ToRole="Event" />
         </EntityType>
         <EntityType Name="VenueFeedback">
           <Key>
@@ -2820,30 +2889,6 @@
             </Principal>
             <Dependent Role="EventEntertainer">
               <PropertyRef Name="EntertainerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Event_Venue">
-          <End Type="N2RModel.Venue" Role="Venue" Multiplicity="0..1" />
-          <End Type="N2RModel.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venue">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="OwnerVenueID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EventEntertainer_Event">
-          <End Type="N2RModel.Event" Role="Event" Multiplicity="0..1" />
-          <End Type="N2RModel.EventEntertainer" Role="EventEntertainer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EventEntertainer">
-              <PropertyRef Name="EventID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3770,6 +3815,105 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SubTypeID" Type="Int32" />
+          <NavigationProperty Name="EventType1" Relationship="N2RModel.FK_EventType_EventType1" FromRole="EventType" ToRole="EventType1" />
+          <NavigationProperty Name="EventType2" Relationship="N2RModel.FK_EventType_EventType1" FromRole="EventType1" ToRole="EventType" />
+          <NavigationProperty Name="Events" Relationship="N2RModel.FK_Event_EventType" FromRole="EventType" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="UserEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Incoming" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InPass" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Outgoing" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OutPass" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SSLEnabled" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="N2RModel.FK_UserEmail_User" FromRole="UserEmail" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_EventType_EventType1">
+          <End Type="N2RModel.EventType" Role="EventType" Multiplicity="0..1" />
+          <End Type="N2RModel.EventType" Role="EventType1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventType1">
+              <PropertyRef Name="SubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEmail_User">
+          <End Type="N2RModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="N2RModel.UserEmail" Role="UserEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEmail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerVenueID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="TypeID" Type="Int32" />
+          <NavigationProperty Name="EventType" Relationship="N2RModel.FK_Event_EventType" FromRole="Event" ToRole="EventType" />
+          <NavigationProperty Name="Venue" Relationship="N2RModel.FK_Event_Venue" FromRole="Event" ToRole="Venue" />
+          <NavigationProperty Name="EventEntertainers" Relationship="N2RModel.FK_EventEntertainer_Event" FromRole="Event" ToRole="EventEntertainer" />
+        </EntityType>
+        <Association Name="FK_Event_EventType">
+          <End Type="N2RModel.EventType" Role="EventType" Multiplicity="0..1" />
+          <End Type="N2RModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Venue">
+          <End Type="N2RModel.Venue" Role="Venue" Multiplicity="0..1" />
+          <End Type="N2RModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="OwnerVenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventEntertainer_Event">
+          <End Type="N2RModel.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="N2RModel.EventEntertainer" Role="EventEntertainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventEntertainer">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3884,20 +4028,6 @@
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="N2RModel.Event">
-              <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="OwnerVenueID" ColumnName="OwnerVenueID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -4349,6 +4479,41 @@
               <MappingFragment StoreEntitySet="UserGallery">
                 <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="N2RModel.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEmails">
+            <EntityTypeMapping TypeName="N2RModel.UserEmail">
+              <MappingFragment StoreEntitySet="UserEmail">
+                <ScalarProperty Name="SSLEnabled" ColumnName="SSLEnabled" />
+                <ScalarProperty Name="OutPass" ColumnName="OutPass" />
+                <ScalarProperty Name="Outgoing" ColumnName="Outgoing" />
+                <ScalarProperty Name="InPass" ColumnName="InPass" />
+                <ScalarProperty Name="Incoming" ColumnName="Incoming" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="N2RModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="OwnerVenueID" ColumnName="OwnerVenueID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
