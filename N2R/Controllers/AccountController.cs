@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using N2R.Models;
+using Facebook;
 
 namespace N2R.Controllers
 {
@@ -392,6 +393,9 @@ namespace N2R.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            ClaimsIdentity ext = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+            var email = ext.Claims.First(x => x.Type.Contains("emailaddress")).Value;
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Manage");

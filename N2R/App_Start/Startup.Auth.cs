@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
 using N2R.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace N2R
 {
@@ -50,7 +51,19 @@ namespace N2R
             var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
             {
                 AppId = "282270101954979",
-                AppSecret = "dfd540ced2d4af8d60b047fc1cc7cdf9"
+                AppSecret = "dfd540ced2d4af8d60b047fc1cc7cdf9",
+                Provider = new FacebookAuthenticationProvider()
+                {
+                    OnAuthenticated = async context =>
+                    {
+                        //Get the access token from FB and store it in the database and
+                        //use FacebookC# SDK to get more information about the user
+                        context.Identity.AddClaim(
+                        new System.Security.Claims.Claim("FacebookAccessToken",
+                                                             context.AccessToken));
+                    }
+                },
+                SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie,
             };
             facebookOptions.Scope.Add("email");
             facebookOptions.Scope.Add("user_friends");

@@ -309,6 +309,7 @@
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FbUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MusicGenre.cs">
       <DependentUpon>N2R.tt</DependentUpon>
@@ -382,6 +383,7 @@
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>
     <Compile Include="Util\Cookies.cs" />
+    <Compile Include="Util\Facebook.cs" />
     <Compile Include="Venue.cs">
       <DependentUpon>N2R.tt</DependentUpon>
     </Compile>

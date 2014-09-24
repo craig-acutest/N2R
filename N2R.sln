@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2R", "N2R\N2R.csproj", "{EE6FD31A-1D60-44D5-8B34-A8C34A644772}"
 EndProject
@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2R.Utilities", "N2R.Utilities\N2R.Utilities.csproj", "{83559950-C7B9-43C9-83D1-75081E4A9974}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corporate", "Corporate\Corporate.csproj", "{B58E25F4-F44A-4107-B79F-87ABFEB75EEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{83559950-C7B9-43C9-83D1-75081E4A9974}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83559950-C7B9-43C9-83D1-75081E4A9974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83559950-C7B9-43C9-83D1-75081E4A9974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58E25F4-F44A-4107-B79F-87ABFEB75EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58E25F4-F44A-4107-B79F-87ABFEB75EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58E25F4-F44A-4107-B79F-87ABFEB75EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58E25F4-F44A-4107-B79F-87ABFEB75EEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
